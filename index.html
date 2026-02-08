@@ -2210,7 +2210,7 @@
             <div class="footer-section">
                 <div class="footer-title">Реквизиты</div>
                 <ul class="footer-links">
-                    <li style="color: var(--text-muted);">ИНН: 7701234567</li>
+                    <li style="color: var(--text-muted);">ИНН: 500918804320</li>
                     <li style="color: var(--text-muted);">г. Москва</li>
                     <li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li>
                 </ul>
@@ -2228,31 +2228,29 @@
         // КОНФИГУРАЦИЯ ОТПРАВКИ ЗАЯВОК
         // ==========================================
         
-        // ВЫБЕРИ ОДИН ИЗ ВАРИАНТОВ:
-        
         // ВАРИАНТ 1: Telegram Bot (РЕКОМЕНДУЮ)
         // 1. Напиши @BotFather в Telegram, создай бота, получи токен
         // 2. Напиши боту любое сообщение, чтобы получить chat_id
         // 3. Вставь данные ниже:
         
         const TELEGRAM_CONFIG = {
-            enabled: false, // Поставь true когда настроишь
-            botToken: '8030827577:AAH8yAiYHTznuCqwC7cwtWgRzOs_3uiRFhg', // Например: 123456789:ABCdefGHIjklMNOpqrsTUVwxyz
-            chatId: '8030827577'      // Например: 123456789
+            enabled: true, // ← ВКЛЮЧЕНО
+            botToken: '8030827577:AAH8yAiYHTznuCqwC7cwtWgRzOs_3uiRFhg',
+            chatId: '717849646'      // ← ИСПРАВЛЕНО: ваш ID, не ID бота
         };
         
         // ВАРИАНТ 2: Email через Formspree (ПРОЩЕ)
-        // 1. Зарегистрируйся на https://formspree.io
-        // 2. Создай форму, получи endpoint вида: https://formspree.io/f/xnqkvpzy
+        // 1. Зарегистрируйся на https://formspree.io 
+        // 2. Создай форму, получи endpoint вида: https://formspree.io/f/xnqkvpzy 
         // 3. Вставь ниже:
         
         const FORMSPREE_CONFIG = {
             enabled: false, // Поставь true когда настроишь
-            endpoint: 'ВАШ_ENDPOINT' // Например: https://formspree.io/f/xnqkvpzy
+            endpoint: 'ВАШ_ENDPOINT' // Например: https://formspree.io/f/xnqkvpzy 
         };
         
         // ВАРИАНТ 3: Email через EmailJS (Универсально)
-        // 1. Зарегистрируйся на https://www.emailjs.com
+        // 1. Зарегистрируйся на https://www.emailjs.com 
         // 2. Создай сервис и шаблон письма
         // 3. Вставь данные:
         
@@ -2333,6 +2331,7 @@
         // Отправка в Telegram
         async function sendToTelegram(data) {
             const text = formatTelegramMessage(data);
+            // ИСПРАВЛЕНО: убран пробел после "bot"
             const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage`;
             
             try {
