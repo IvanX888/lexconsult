@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d0d0d">
+    <title>LexConsult — Премиальные юридические услуги</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-dark: #0d0d0d;
+            --bg-card: #141414;
+            --bg-elevated: #1a1a1a;
+            --gold: #c9a227;
+            --gold-light: #e8d5a3;
+            --gold-dark: #8b6914;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b8b8b8;
+            --text-muted: #666666;
+            --border: rgba(201, 162, 39, 0.15);
+            --border-hover: rgba(201, 162, 39, 0.4);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --success: #4ade80;
+            --error: #f87171;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+
+        /* GEOMETRIC BACKGROUND */
+        .geo-bg {
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+
+        .geo-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(135deg, transparent 40%, rgba(201, 162, 39, 0.03) 50%, transparent 60%),
+                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.02) 50%, transparent 60%),
+                repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201, 162, 39, 0.04) 60px, rgba(201, 162, 39, 0.04) 61px, transparent 61px, transparent 120px),
+                repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201, 162, 39, 0.04) 60px, rgba(201, 162, 39, 0.04) 61px, transparent 61px, transparent 120px),
+                repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255, 255, 255, 0.015) 20px, rgba(255, 255, 255, 0.015) 21px, transparent 21px, transparent 40px),
+                repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255, 255, 255, 0.015) 20px, rgba(255, 255, 255, 0.015) 21px, transparent 21px, transparent 40px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .geo-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .geo-shape {
+            position: absolute;
+            border: 1px solid rgba(201, 162, 39, 0.08);
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.05) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .geo-shape-1 { width: 200px; height: 200px; top: 10%; right: -50px; transform: rotate(15deg); animation: float 20s ease-in-out infinite; }
+        .geo-shape-2 { width: 150px; height: 150px; top: 40%; left: -30px; transform: rotate(-10deg); animation: float 25s ease-in-out infinite reverse; }
+        .geo-shape-3 { width: 100px; height: 100px; bottom: 20%; right: 10%; transform: rotate(25deg); animation: float 18s ease-in-out infinite; }
+        .geo-shape-4 { width: 180px; height: 180px; bottom: 10%; left: 5%; transform: rotate(-5deg); animation: float 22s ease-in-out infinite reverse; }
+        .geo-shape-5 { width: 120px; height: 120px; top: 60%; right: 20%; transform: rotate(35deg); border-radius: 4px; animation: float 24s ease-in-out infinite; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+            50% { transform: translateY(-20px) rotate(calc(var(--r, 0deg) + 5deg)); }
+        }
+
+        .embossed {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(13, 13, 13, 0.95) 100%);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 -1px 0 rgba(0, 0, 0, 0.5) inset, var(--shadow);
+            position: relative;
+        }
+
+        .embossed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(201, 162, 39, 0.02) 2px, rgba(201, 162, 39, 0.02) 4px),
+                        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(201, 162, 39, 0.02) 2px, rgba(201, 162, 39, 0.02) 4px);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            z-index: 1002;
+        }
+
+        .logo-emblem {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+
+        .logo-emblem svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.3));
+        }
+
+        .logo-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-title span {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .logo-subtitle {
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .nav-desktop {
+            display: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 2px;
+            min-height: 48px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before, .btn:active::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-primary:hover, .btn-primary:active {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-outline:hover, .btn-outline:active {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        .btn-large {
+            padding: 18px 32px;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .nav-mobile-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--gold);
+            z-index: 1002;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: 100px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            line-height: 1.15;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 strong {
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-top: 8px;
+            font-size: 40px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+            align-items: center;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.05);
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 340px;
+            justify-content: center;
+        }
+
+        .hero-feature::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .hero-visual {
+            width: 100%;
+        }
+
+        .hero-card {
+            padding: 28px 24px;
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 28px;
+            border: 1px solid var(--border);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+        }
+
+        .hero-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .hero-card-subtitle {
+            font-size: 10px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        .hero-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            border-left: 2px solid var(--gold);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 16px 8px;
+            background: rgba(201, 162, 39, 0.05);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .hero-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+        }
+
+        .hero-stat-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .hero-stat-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: rgba(10, 10, 10, 0.8);
+            padding: 32px 20px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            z-index: 1;
+        }
+
+        .trust-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .trust-item strong {
+            color: var(--gold);
+            font-size: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            display: block;
+        }
+
+        .trust-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 18px;
+            background: rgba(201, 162, 39, 0.05);
+            position: relative;
+        }
+
+        .trust-icon::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        /* Sections */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid var(--border);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            background: rgba(201, 162, 39, 0.05);
+        }
+
+        .section-label::before, .section-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            border: 1px solid var(--gold);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .section-label::before { left: 10px; }
+        .section-label::after { right: 10px; }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .section-title strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Services */
+        .services {
+            padding: 80px 0;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            padding: 28px 24px;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 40%, rgba(201, 162, 39, 0.03) 50%, transparent 60%),
+                        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.01) 10px, rgba(255, 255, 255, 0.01) 11px);
+            pointer-events: none;
+        }
+
+        .service-card:active {
+            border-color: var(--border-hover);
+            transform: scale(0.99);
+        }
+
+        .service-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 300;
+            color: rgba(201, 162, 39, 0.08);
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            z-index: 0;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.02) 100%);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            z-index: 1;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-right: 60px;
+            z-index: 1;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            z-index: 1;
+        }
+
+        .service-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            z-index: 1;
+        }
+
+        .service-price-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .service-price-unit {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+            z-index: 1;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.08);
+        }
+
+        .service-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border: 1px solid var(--gold);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .service-btn {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            min-height: 52px;
+            z-index: 1;
+        }
+
+        .service-btn:active {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* How it Works */
+        .how-it-works {
+            padding: 80px 0;
+            z-index: 1;
+        }
+
+        .how-content {
+            padding: 0 20px;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .step {
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
+                        repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255, 255, 255, 0.01) 4px, rgba(255, 255, 255, 0.01) 5px);
+            pointer-events: none;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.02) 100%);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            flex-shrink: 0;
+            z-index: 1;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            z-index: 1;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+            margin-top: 48px;
+        }
+
+        .pricing-card {
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--gold);
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.08) 0%, rgba(13, 13, 13, 0.95) 100%);
+            box-shadow: var(--shadow), 0 0 40px rgba(201, 162, 39, 0.15);
+            order: -1;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+            color: var(--bg-dark);
+            padding: 8px 24px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pricing-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pricing-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .pricing-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.2);
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-period {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            padding: 60px 20px;
+            text-align: center;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .guarantee-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .guarantee-icon::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .guarantee-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 20px;
+        }
+
+        .guarantee-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+            z-index: 1;
+        }
+
+        .faq-list {
+            margin-top: 48px;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            background: rgba(10, 10, 10, 0.4);
+            margin-bottom: 12px;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(201, 162, 39, 0.01) 4px, rgba(201, 162, 39, 0.01) 5px);
+            pointer-events: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: left;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            gap: 16px;
+            z-index: 1;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--gold);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 14px;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            z-index: 1;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            padding: 0 20px;
+            margin-top: 48px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+        }
+
+        .contact-method::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--gold);
+            z-index: 1;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-method-content {
+            flex: 1;
+            min-width: 0;
+            z-index: 1;
+        }
+
+        .contact-method-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .contact-method-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            word-break: break-word;
+        }
+
+        .contact-urgent {
+            margin-top: 32px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .contact-urgent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                        repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255, 255, 255, 0.01) 8px, rgba(255, 255, 255, 0.01) 9px);
+            pointer-events: none;
+        }
+
+        .contact-urgent-title {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .contact-urgent-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        .contact-form {
+            padding: 32px 24px;
+        }
+
+        .contact-form::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--border);
+            font-size: 16px;
+            transition: var(--transition);
+            background: rgba(10, 10, 10, 0.6);
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            -webkit-appearance: none;
+            appearance: none;
+            z-index: 1;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a227' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+            position: relative;
+        }
+
+        .form-submit.loading {
+            color: transparent;
+        }
+
+        .form-submit.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid var(--bg-dark);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spinner 0.8s linear infinite;
+        }
+
+        @keyframes spinner {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-footer {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 60px 20px 24px;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 3px;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 4px 0;
+        }
+
+        .footer-links a:active {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 340px;
+            height: 100vh;
+            height: 100dvh;
+            background: var(--bg-dark);
+            z-index: 1001;
+            padding: 100px 28px 40px;
+            transition: right 0.3s ease;
+            border-left: 1px solid var(--border);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(201, 162, 39, 0.02) 20px, rgba(201, 162, 39, 0.02) 21px);
+            pointer-events: none;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gold);
+            z-index: 2;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 2;
+        }
+
+        .mobile-nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .mobile-nav a:active {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .mobile-nav .btn {
+            margin-top: 24px;
+            width: 100%;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-dark);
+            border: 1px solid var(--gold);
+            padding: 32px 24px;
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+            width: 90%;
+            max-width: 320px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -45%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .notification.success {
+            border-color: var(--success);
+        }
+
+        .notification.error {
+            border-color: var(--error);
+        }
+
+        .notification-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .notification.success .notification-icon {
+            border-color: var(--success);
+            color: var(--success);
+            background: rgba(74, 222, 128, 0.1);
+        }
+
+        .notification.error .notification-icon {
+            border-color: var(--error);
+            color: var(--error);
+            background: rgba(248, 113, 113, 0.1);
+        }
+
+        .notification-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .notification-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .notification-btn {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 32px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .notification.success .notification-btn {
+            background: var(--success);
+        }
+
+        .notification.error .notification-btn {
+            background: var(--error);
+            color: white;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tablet */
+        @media (min-width: 640px) {
+            .hero-content h1 { font-size: 44px; }
+            .hero-content h1 strong { font-size: 48px; }
+            .section-title { font-size: 40px; }
+            .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .pricing-card.popular { grid-column: span 2; order: -1; }
+            .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .trust-content { grid-template-columns: repeat(4, 1fr); }
+            .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+            .contact-info h3 { text-align: left; }
+            .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; text-align: left; }
+            .footer-brand, .footer-section { text-align: left; }
+            .footer-desc { margin: 0; }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .header-content { padding: 20px 40px; }
+            .logo-emblem { width: 56px; height: 56px; }
+            .logo-title { font-size: 28px; }
+            .logo-subtitle { display: block; }
+            .nav-desktop { display: flex; gap: 40px; align-items: center; }
+            .nav-link {
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                transition: var(--transition);
+                position: relative;
+                padding: 8px 0;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background: var(--gold);
+                transition: var(--transition);
+            }
+            .nav-link:hover { color: var(--gold); }
+            .nav-link:hover::after { width: 100%; }
+            .nav-mobile-btn { display: none; }
+            .btn-large { width: auto; padding: 18px 36px; }
+            .hero {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 80px;
+                align-items: center;
+                padding: 160px 40px 120px;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            .hero-content { text-align: left; }
+            .hero-content h1 { font-size: 56px; }
+            .hero-content h1 strong { font-size: 64px; }
+            .hero-subtitle { font-size: 18px; max-width: 540px; }
+            .hero-features { align-items: flex-start; }
+            .hero-feature { justify-content: flex-start; width: auto; max-width: none; }
+            .hero-cta { flex-direction: row; width: auto; margin: 0; }
+            .hero-visual { order: 0; }
+            .hero-card {
+                padding: 48px;
+                transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+                transition: var(--transition);
+            }
+            .hero-card:hover {
+                transform: perspective(1000px) rotateY(0) rotateX(0);
+            }
+            .hero-stats { gap: 16px; }
+            .hero-stat { padding: 24px; }
+            .hero-stat-value { font-size: 36px; }
+            .section-header { margin-bottom: 80px; }
+            .section-title { font-size: 52px; }
+            .services { padding: 120px 40px; }
+            .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0; }
+            .service-card { padding: 40px; }
+            .service-card:hover {
+                transform: translateY(-8px);
+                border-color: var(--border-hover);
+                box-shadow: var(--shadow), 0 0 40px rgba(201, 162, 39, 0.1);
+            }
+            .how-it-works { padding: 120px 40px; }
+            .steps { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+            .step { flex-direction: column; text-align: center; }
+            .step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: -12px;
+                top: 40px;
+                width: 24px;
+                height: 1px;
+                background: linear-gradient(90deg, var(--gold), transparent);
+            }
+            .pricing { padding: 120px 40px; }
+            .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0; }
+            .pricing-card.popular { grid-column: span 1; transform: scale(1.05); }
+            .pricing-card.popular:hover { transform: scale(1.05) translateY(-8px); }
+            .faq { padding: 120px 40px; }
+            .faq-list { max-width: 900px; margin: 80px auto 0; padding: 0; }
+            .contact { padding: 120px 40px; }
+            .contact-grid { gap: 80px; max-width: 1200px; margin: 80px auto 0; }
+            .footer { padding: 80px 40px 40px; }
+            .footer-content { max-width: 1400px; margin: 0 auto 80px; gap: 80px; }
+            .footer-bottom { flex-direction: row; justify-content: space-between; max-width: 1400px; margin: 0 auto; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Geometric Background -->
+    <div class="geo-shapes">
+        <div class="geo-shape geo-shape-1" style="--r: 15deg;"></div>
+        <div class="geo-shape geo-shape-2" style="--r: -10deg;"></div>
+        <div class="geo-shape geo-shape-3" style="--r: 25deg;"></div>
+        <div class="geo-shape geo-shape-4" style="--r: -5deg;"></div>
+        <div class="geo-shape geo-shape-5" style="--r: 35deg;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-emblem">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8b6914;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#c9a227;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="10" y="10" width="80" height="80" stroke="url(#goldGrad)" stroke-width="1.5" fill="none" rx="2"/>
+                        <rect x="18" y="18" width="64" height="64" stroke="url(#goldGrad)" stroke-width="0.5" fill="none" rx="1"/>
+                        <line x1="50" y1="22" x2="50" y2="55" stroke="#f5f5f5" stroke-width="2.5"/>
+                        <line x1="28" y1="38" x2="72" y2="38" stroke="#f5f5f5" stroke-width="1.5"/>
+                        <path d="M28 38 L24 50 Q28 54 32 50 L28 38" fill="url(#goldGrad)"/>
+                        <path d="M72 38 L76 50 Q72 54 68 50 L72 38" fill="url(#goldGrad)"/>
+                        <rect x="46" y="55" width="8" height="20" fill="#f5f5f5"/>
+                        <rect x="38" y="75" width="24" height="4" fill="#f5f5f5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-title">Lex<span>Consult</span></div>
+                    <div class="logo-subtitle">Премиальные юридические услуги</div>
+                </div>
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#how" class="nav-link">Процесс</a>
+                <a href="#pricing" class="nav-link">Тарифы</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="btn btn-primary">Консультация</a>
+            </nav>
+            
+            <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu">
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">×</button>
+        <nav class="mobile-nav">
+            <a href="#services" onclick="toggleMenu()">Услуги</a>
+            <a href="#how" onclick="toggleMenu()">Процесс</a>
+            <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
+            <a href="#faq" onclick="toggleMenu()">FAQ</a>
+            <a href="#contact" onclick="toggleMenu()">Контакты</a>
+            <a href="#contact" class="btn btn-primary" onclick="toggleMenu()">Записаться</a>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero geo-bg">
+        <div class="hero-content fade-in">
+            <h1>Премиальная <strong>юридическая поддержка</strong></h1>
+            <p class="hero-subtitle">Частный юрист премиум-класса. Решаю сложные вопросы в сфере недвижимости, семейного права и налогов.</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">Конфиденциальность гарантирована</div>
+                <div class="hero-feature">Работаю лично, без ассистентов</div>
+                <div class="hero-feature">Доступен 7 дней в неделю</div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary btn-large">Записаться на консультацию</a>
+                <a href="#services" class="btn btn-outline btn-large">Смотреть услуги</a>
+            </div>
+        </div>
+        
+        <div class="hero-visual fade-in">
+            <div class="hero-card embossed">
+                <div class="hero-card-header">
+                    <div class="hero-avatar">⚖️</div>
+                    <div>
+                        <div class="hero-card-title">Иван Серко</div>
+                        <div class="hero-card-subtitle">Частный юрист</div>
+                    </div>
+                </div>
+                <p class="hero-quote">
+                    "Юриспруденция — это не только знание законов, но и понимание человеческих отношений."
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">15+</div>
+                        <div class="hero-stat-label">Лет практики</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">2,800</div>
+                        <div class="hero-stat-label">Дел решено</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">97%</div>
+                        <div class="hero-stat-label">Успешность</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar geo-bg">
+        <div class="trust-content">
+            <div class="trust-item">
+                <div class="trust-icon">★</div>
+                <div><strong>4.9/5</strong> рейтинг</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">◆</div>
+                <div><strong>100%</strong> конфиденциальность</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">◆</div>
+                <div><strong>15 мин</strong> ответ</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">◆</div>
+                <div><strong>24/7</strong> поддержка</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services geo-bg" id="services">
+        <div class="section-header fade-in">
+            <div class="section-label">Практика</div>
+            <h2 class="section-title">Направления <strong>работы</strong></h2>
+            <p class="section-subtitle">Специализация на сложных делах, требующих индивидуального подхода</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card embossed fade-in" onclick="selectService('Недвижимость')">
+                <div class="service-number">01</div>
+                <div class="service-icon">🏛️</div>
+                <h3 class="service-title">Недвижимость</h3>
+                <p class="service-desc">Сопровождение сделок любой сложности. Проверка юридической чистоты.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 5 000 ₽</span>
+                    <span class="service-price-unit">/ консультация</span>
+                </div>
+                <ul class="service-features">
+                    <li>Проверка квартиры перед покупкой</li>
+                    <li>Сопровождение сделки</li>
+                    <li>Договор купли-продажи</li>
+                    <li>Споры с застройщиком</li>
+                </ul>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <div class="service-card embossed fade-in" onclick="selectService('Семейное право')">
+                <div class="service-number">02</div>
+                <div class="service-icon">⚖️</div>
+                <h3 class="service-title">Семейные споры</h3>
+                <p class="service-desc">Разводы, раздел имущества, алименты. Защита интересов детей.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 4 000 ₽</span>
+                    <span class="service-price-unit">/ консультация</span>
+                </div>
+                <ul class="service-features">
+                    <li>Развод через суд и ЗАГС</li>
+                    <li>Раздел совместного имущества</li>
+                    <li>Взыскание алиментов</li>
+                    <li>Ограничение родительских прав</li>
+                </ul>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <div class="service-card embossed fade-in" onclick="selectService('Наследство')">
+                <div class="service-number">03</div>
+                <div class="service-icon">📜</div>
+                <h3 class="service-title">Наследственные дела</h3>
+                <p class="service-desc">Оформление наследства, восстановление сроков, оспаривание завещаний.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 6 000 ₽</span>
+                    <span class="service-price-unit">/ консультация</span>
+                </div>
+                <ul class="service-features">
+                    <li>Вступление в наследство</li>
+                    <li>Восстановление сроков</li>
+                    <li>Оспаривание завещания</li>
+                    <li>Раздел имущества</li>
+                </ul>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <div class="service-card embossed fade-in" onclick="selectService('Налоги')">
+                <div class="service-number">04</div>
+                <div class="service-icon">📊</div>
+                <h3 class="service-title">Налоговые споры</h3>
+                <p class="service-desc">Защита при проверках ФНС. Оспаривание штрафов. Возврат вычетов.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 4 000 ₽</span>
+                    <span class="service-price-unit">/ консультация</span>
+                </div>
+                <ul class="service-features">
+                    <li>Имущественные вычеты</li>
+                    <li>Оспаривание решений ФНС</li>
+                    <li>Сопровождение проверок</li>
+                    <li>Возврат НДФЛ</li>
+                </ul>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <div class="service-card embossed fade-in" onclick="selectService('Защита прав потребителей')">
+                <div class="service-number">05</div>
+                <div class="service-icon">🛡️</div>
+                <h3 class="service-title">Защита прав потребителей</h3>
+                <p class="service-desc">Возврат товаров и денег. Компенсация от банков и страховых.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 3 000 ₽</span>
+                    <span class="service-price-unit">/ консультация</span>
+                </div>
+                <ul class="service-features">
+                    <li>Возврат товара</li>
+                    <li>Компенсация от туроператора</li>
+                    <li>Споры с банками</li>
+                    <li>Взыскание неустоек</li>
+                </ul>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+
+            <div class="service-card embossed fade-in" onclick="selectService('Трудовое право')">
+                <div class="service-number">06</div>
+                <div class="service-icon">💼</div>
+                <h3 class="service-title">Трудовые споры</h3>
+                <p class="service-desc">Незаконное увольнение, задолженность по зарплате. Восстановление на работе.</p>
+                <div class="service-price">
+                    <span class="service-price-value">от 4 000 ₽</span>
+                    <span class="service-price-unit">/ консультация</span>
+                </div>
+                <ul class="service-features">
+                    <li>Восстановление на работе</li>
+                    <li>Взыскание задолженности</li>
+                    <li>Оспаривание взысканий</li>
+                    <li>Компенсация при сокращении</li>
+                </ul>
+                <button class="btn btn-primary service-btn">Заказать</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works geo-bg" id="how">
+        <div class="how-content">
+            <div class="section-header fade-in">
+                <div class="section-label">Процесс</div>
+                <h2 class="section-title">Как мы <strong>работаем</strong></h2>
+                <p class="section-subtitle">Чёткий алгоритм от первого обращения до результата</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step embossed fade-in">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Заявка</h3>
+                        <p class="step-desc">Заполните форму или напишите в мессенджер. Опишите ситуацию кратко.</p>
+                    </div>
+                </div>
+                <div class="step embossed fade-in">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Анализ</h3>
+                        <p class="step-desc">Изучаю документы и формирую стратегию. Срок — 1-2 часа.</p>
+                    </div>
+                </div>
+                <div class="step embossed fade-in">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Договор</h3>
+                        <p class="step-desc">Согласовываем условия и подписываем договор. Оплата по факту.</p>
+                    </div>
+                </div>
+                <div class="step embossed fade-in">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Результат</h3>
+                        <p class="step-desc">Выполняю работу и предоставляю отчёт. Сопровождаю до конца.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing geo-bg" id="pricing">
+        <div class="section-header fade-in">
+            <div class="section-label">Инвестиции</div>
+            <h2 class="section-title">Тарифы на <strong>услуги</strong></h2>
+            <p class="section-subtitle">Прозрачное ценообразование без скрытых платежей</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card embossed fade-in">
+                <div class="pricing-name">Консультация</div>
+                <div class="pricing-desc">Для оценки ситуации</div>
+                <div class="pricing-price">2 000 ₽<span>/ час</span></div>
+                <div class="pricing-period">Минимум 1 час</div>
+                <ul class="pricing-features">
+                    <li>Устная консультация</li>
+                    <li>Анализ документов</li>
+                    <li>Правовое заключение</li>
+                    <li>План действий</li>
+                    <li>Поддержка 3 дня</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+
+            <div class="pricing-card popular embossed fade-in">
+                <div class="popular-badge">Рекомендую</div>
+                <div class="pricing-name">Документы + сопровождение</div>
+                <div class="pricing-desc">Оптимальный выбор</div>
+                <div class="pricing-price">8 000 ₽<span>/ услуга</span></div>
+                <div class="pricing-period">Разовый платёж</div>
+                <ul class="pricing-features">
+                    <li>Всё из тарифа "Консультация"</li>
+                    <li>Составление документов</li>
+                    <li>Иски, претензии, договоры</li>
+                    <li>5 правок включено</li>
+                    <li>Поддержка 14 дней</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%;">Выбрать</a>
+            </div>
+
+            <div class="pricing-card embossed fade-in">
+                <div class="pricing-name">Комплексное ведение</div>
+                <div class="pricing-desc">Полный контроль дела</div>
+                <div class="pricing-price">25 000 ₽<span>/ дело</span></div>
+                <div class="pricing-period">До результата</div>
+                <ul class="pricing-features">
+                    <li>Всё из предыдущих тарифов</li>
+                    <li>Полное сопровождение</li>
+                    <li>Представительство в суде</li>
+                    <li>Неограниченные правки</li>
+                    <li>Поддержка 24/7</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <div class="guarantee geo-bg">
+        <div class="guarantee-content fade-in">
+            <div class="guarantee-icon">◆</div>
+            <h2 class="guarantee-title">Гарантия качества</h2>
+            <div class="gold-line"></div>
+            <p class="guarantee-text">
+                Если после консультации вы решите, что моя помощь не требуется — верну 100% оплаты. 
+                Бесплатные правки документов до полного соответствия вашим требованиям.
+            </p>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="faq geo-bg" id="faq">
+        <div class="section-header fade-in">
+            <div class="section-label">Вопросы</div>
+            <h2 class="section-title">Часто задаваемые <strong>вопросы</strong></h2>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item embossed fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    В чём разница между юристом и адвокатом?
+                </button>
+                <div class="faq-answer">
+                    <p>Адвокат — член адвокатской палаты, имеет право защищать в уголовных делах. Юрист оказывает консультации, составляет документы, представляет интересы в гражданских делах. Для 95% вопросов адвокат не требуется.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item embossed fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Можете ли вы представлять меня в суде?
+                </button>
+                <div class="faq-answer">
+                    <p>Да, в гражданском, арбитражном и административном процессе. Могу подавать иски, участвовать в заседаниях, обжаловать решения. В уголовных делах помогу подобрать адвоката.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item embossed fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Как проходит онлайн-консультация?
+                </button>
+                <div class="faq-answer">
+                    <p>После оплаты связываемся по видео или телефону. Вы рассказываете ситуацию, я анализирую и предлагаю решения. После высылаю письменное заключение с планом действий.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item embossed fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Какие гарантии результата?
+                </button>
+                <div class="faq-answer">
+                    <p>Гарантирую качество работы: возврат денег за консультацию, бесплатные правки документов, работу до результата. Не могу гарантировать решение суда, но гарантирую профессиональную подготовку.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item embossed fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Какие документы нужны для начала?
+                </button>
+                <div class="faq-answer">
+                    <p>Минимум: паспорт и документы по вопросу. Для недвижимости — выписка ЕГРН. Для семейных споров — свидетельство о браке. Для налогов — уведомления ФНС.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact geo-bg" id="contact">
+        <div class="section-header fade-in">
+            <div class="section-label">Контакты</div>
+            <h2 class="section-title">Начнём <strong>работу</strong></h2>
+            <p class="section-subtitle">Опишите ситуацию — я отвечу в течение 15 минут</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Прямая связь</h3>
+                <div class="contact-methods">
+                    <div class="contact-method embossed">
+                        <div class="contact-method-icon">📱</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">WhatsApp / Telegram</div>
+                            <div class="contact-method-value">+7 (977) 42-32-473</div>
+                        </div>
+                    </div>
+                    <div class="contact-method embossed">
+                        <div class="contact-method-icon">✉️</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">Email</div>
+                            <div class="contact-method-value">333742917@mail.ru</div>
+                        </div>
+                    </div>
+                    <div class="contact-method embossed">
+                        <div class="contact-method-icon">🕐</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">Режим работы</div>
+                            <div class="contact-method-value">9:00 — 21:00, ежедневно</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-urgent embossed">
+                    <div class="contact-urgent-title">Срочный вопрос?</div>
+                    <div class="contact-urgent-text">
+                        Напишите в WhatsApp — отвечу быстрее, чем через форму. 
+                        Для постоянных клиентов доступна поддержка 24/7.
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form embossed fade-in" id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Ваше имя *</label>
+                    <input type="text" class="form-input" name="name" placeholder="Иванов Иван" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Телефон или email *</label>
+                    <input type="text" class="form-input" name="contact" placeholder="+7 (999) 000-00-00" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Тема обращения</label>
+                    <select class="form-select" name="service" id="serviceSelect">
+                        <option value="">Выберите направление</option>
+                        <option value="Недвижимость">Недвижимость</option>
+                        <option value="Семейное право">Семейные споры</option>
+                        <option value="Наследство">Наследство</option>
+                        <option value="Налоги">Налоговые споры</option>
+                        <option value="Защита прав потребителей">Защита прав потребителей</option>
+                        <option value="Трудовое право">Трудовые споры</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Описание ситуации</label>
+                    <textarea class="form-textarea" name="message" placeholder="Кратко опишите проблему..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large form-submit" id="submitBtn">
+                    Отправить заявку
+                </button>
+                
+                <p class="form-footer">
+                    Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности<br>
+                    и обработкой персональных данных
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer geo-bg">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Lex<span>Consult</span></div>
+                <p class="footer-desc">
+                    Премиальные юридические услуги для частных клиентов и бизнеса. 
+                    Индивидуальный подход, конфиденциальность, результат.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-title">Услуги</div>
+                <ul class="footer-links">
+                    <li><a href="#services">Недвижимость</a></li>
+                    <li><a href="#services">Семейные споры</a></li>
+                    <li><a href="#services">Наследство</a></li>
+                    <li><a href="#services">Налоги</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-title">Информация</div>
+                <ul class="footer-links">
+                    <li><a href="#how">Как это работает</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-title">Реквизиты</div>
+                <ul class="footer-links">
+                    <li style="color: var(--text-muted);">ИНН: 7701234567</li>
+                    <li style="color: var(--text-muted);">г. Москва</li>
+                    <li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>© 2026 LexConsult. Все права защищены.</span>
+            <span>Информация не является публичной офертой</span>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================
+        // КОНФИГУРАЦИЯ ОТПРАВКИ ЗАЯВОК
+        // ==========================================
+        
+        // ВЫБЕРИ ОДИН ИЗ ВАРИАНТОВ:
+        
+        // ВАРИАНТ 1: Telegram Bot (РЕКОМЕНДУЮ)
+        // 1. Напиши @BotFather в Telegram, создай бота, получи токен
+        // 2. Напиши боту любое сообщение, чтобы получить chat_id
+        // 3. Вставь данные ниже:
+        
+        const TELEGRAM_CONFIG = {
+            enabled: false, // Поставь true когда настроишь
+            botToken: '8030827577:AAH8yAiYHTznuCqwC7cwtWgRzOs_3uiRFhg', // Например: 123456789:ABCdefGHIjklMNOpqrsTUVwxyz
+            chatId: '8030827577'      // Например: 123456789
+        };
+        
+        // ВАРИАНТ 2: Email через Formspree (ПРОЩЕ)
+        // 1. Зарегистрируйся на https://formspree.io
+        // 2. Создай форму, получи endpoint вида: https://formspree.io/f/xnqkvpzy
+        // 3. Вставь ниже:
+        
+        const FORMSPREE_CONFIG = {
+            enabled: false, // Поставь true когда настроишь
+            endpoint: 'ВАШ_ENDPOINT' // Например: https://formspree.io/f/xnqkvpzy
+        };
+        
+        // ВАРИАНТ 3: Email через EmailJS (Универсально)
+        // 1. Зарегистрируйся на https://www.emailjs.com
+        // 2. Создай сервис и шаблон письма
+        // 3. Вставь данные:
+        
+        const EMAILJS_CONFIG = {
+            enabled: false, // Поставь true когда настроишь
+            serviceId: 'ВАШ_SERVICE_ID',
+            templateId: 'ВАШ_TEMPLATE_ID',
+            publicKey: 'ВАШ_PUBLIC_KEY'
+        };
+
+        // ==========================================
+        // ЛОГИКА ОТПРАВКИ
+        // ==========================================
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = new FormData(form);
+            
+            const data = {
+                name: formData.get('name'),
+                contact: formData.get('contact'),
+                service: formData.get('service') || 'Не выбрано',
+                message: formData.get('message') || 'Нет описания',
+                date: new Date().toLocaleString('ru-RU'),
+                source: window.location.href
+            };
+            
+            // Валидация
+            if (!data.name || !data.contact) {
+                showNotification('error', 'Ошибка', 'Пожалуйста, заполните обязательные поля');
+                return;
+            }
+            
+            // Показываем загрузку
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            
+            try {
+                let success = false;
+                
+                // Пробуем Telegram
+                if (TELEGRAM_CONFIG.enabled) {
+                    success = await sendToTelegram(data);
+                }
+                
+                // Если Telegram не сработал или выключен, пробуем Formspree
+                if (!success && FORMSPREE_CONFIG.enabled) {
+                    success = await sendToFormspree(data);
+                }
+                
+                // Если ничего не сработало, показываем инструкцию
+                if (!success) {
+                    // Fallback: копируем данные в буфер и показываем контакты
+                    const text = formatMessage(data);
+                    await copyToClipboard(text);
+                    showNotification('success', 'Заявка скопирована!', 
+                        'Данные скопированы в буфер обмена. Отправьте их мне в WhatsApp или Telegram.');
+                    success = true;
+                }
+                
+                if (success) {
+                    form.reset();
+                }
+                
+            } catch (error) {
+                console.error('Ошибка отправки:', error);
+                showNotification('error', 'Ошибка отправки', 
+                    'Пожалуйста, свяжитесь со мной напрямую по телефону или WhatsApp');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+            }
+        }
+
+        // Отправка в Telegram
+        async function sendToTelegram(data) {
+            const text = formatTelegramMessage(data);
+            const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CONFIG.chatId,
+                        text: text,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.ok) {
+                    showNotification('success', 'Заявка отправлена!', 
+                        'Я получил вашу заявку и свяжусь с вами в ближайшее время');
+                    return true;
+                }
+                
+                throw new Error(result.description);
+            } catch (error) {
+                console.error('Telegram error:', error);
+                return false;
+            }
+        }
+
+        // Отправка через Formspree
+        async function sendToFormspree(data) {
+            try {
+                const response = await fetch(FORMSPREE_CONFIG.endpoint, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showNotification('success', 'Заявка отправлена!', 
+                        'Я получил вашу заявку на email и свяжусь с вами в ближайшее время');
+                    return true;
+                }
+                
+                throw new Error('Formspree error');
+            } catch (error) {
+                console.error('Formspree error:', error);
+                return false;
+            }
+        }
+
+        // Форматирование сообщения для Telegram
+        function formatTelegramMessage(data) {
+            return `
+<b>🎯 Новая заявка с сайта LexConsult</b>
+
+<b>👤 Имя:</b> ${escapeHtml(data.name)}
+<b>📞 Контакт:</b> ${escapeHtml(data.contact)}
+<b>📋 Услуга:</b> ${escapeHtml(data.service)}
+<b>🕐 Дата:</b> ${data.date}
+
+<b>💬 Сообщение:</b>
+${escapeHtml(data.message)}
+
+<a href="${data.source}">🔗 Источник</a>
+            `.trim();
+        }
+
+        // Форматирование обычного сообщения
+        function formatMessage(data) {
+            return `
+Новая заявка с сайта LexConsult
+
+Имя: ${data.name}
+Контакт: ${data.contact}
+Услуга: ${data.service}
+Дата: ${data.date}
+
+Сообщение:
+${data.message}
+            `.trim();
+        }
+
+        // Экранирование HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Копирование в буфер обмена
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+            } catch (err) {
+                // Fallback для старых браузеров
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Показ уведомления
+        function showNotification(type, title, text) {
+            // Удаляем старые уведомления
+            document.querySelectorAll('.notification').forEach(n => n.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-icon">${type === 'success' ? '✓' : '✕'}</div>
+                <div class="notification-title">${title}</div>
+                <div class="notification-text">${text}</div>
+                <button class="notification-btn" onclick="this.parentElement.remove()">Закрыть</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Автоматически закрываем через 5 секунд
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // ==========================================
+        // ОСТАЛЬНЫЕ ФУНКЦИИ
+        // ==========================================
+
+        function toggleMenu() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+            document.body.style.overflow = document.querySelector('.mobile-menu').classList.contains('active') ? 'hidden' : '';
+        }
+
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        function selectService(serviceName) {
+            document.getElementById('serviceSelect').value = serviceName;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(13, 13, 13, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
+            } else {
+                header.style.background = 'rgba(13, 13, 13, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
