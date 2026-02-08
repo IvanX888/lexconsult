@@ -2210,7 +2210,7 @@
             <div class="footer-section">
                 <div class="footer-title">Реквизиты</div>
                 <ul class="footer-links">
-                    <li style="color: var(--text-muted);">ИНН: 500918804320</li>
+                    <li style="color: var(--text-muted);">ИНН: 7701234567</li>
                     <li style="color: var(--text-muted);">г. Москва</li>
                     <li><a href="tel:+79774232473">+7 (977) 42-32-473</a></li>
                 </ul>
@@ -2236,9 +2236,9 @@
         // 3. Вставь данные ниже:
         
         const TELEGRAM_CONFIG = {
-            enabled: true, // Поставь true когда настроишь
-            botToken: '8030827577:AAG8yAiYHTznuCqwC7cwtWgRzOs_3uiRFhg', // Например: 123456789:ABCdefGHIjklMNOpqrsTUVwxyz
-            chatId: '717849646'      // Например: 123456789
+            enabled: false, // Поставь true когда настроишь
+            botToken: '8030827577:AAH8yAiYHTznuCqwC7cwtWgRzOs_3uiRFhg', // Например: 123456789:ABCdefGHIjklMNOpqrsTUVwxyz
+            chatId: '8030827577'      // Например: 123456789
         };
         
         // ВАРИАНТ 2: Email через Formspree (ПРОЩЕ)
@@ -2333,7 +2333,7 @@
         // Отправка в Telegram
         async function sendToTelegram(data) {
             const text = formatTelegramMessage(data);
-            const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage ;
+            const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage`;
             
             try {
                 const response = await fetch(url, {
@@ -2536,9 +2536,4 @@ ${data.message}
         });
     </script>
 </body>
-
 </html>
-
-
-
-
