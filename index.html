@@ -2333,7 +2333,7 @@
         // Отправка в Telegram
         async function sendToTelegram(data) {
             const text = formatTelegramMessage(data);
-            const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage`;
+            const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage ;
             
             try {
                 const response = await fetch(url, {
@@ -2538,5 +2538,6 @@ ${data.message}
 </body>
 
 </html>
+
 
 
