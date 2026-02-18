@@ -114,21 +114,36 @@
             animation: rotateCubeSlow 4s infinite linear;
         }
 
-        .preloader-cube-face {
+                .preloader-cube-face {
             position: absolute;
             width: 80px;
             height: 80px;
-            border: 2px solid var(--gold);
+            border: 2px solid;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Cormorant Garamond', 'Georgia', serif;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 600;
-            color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+        }
+
+        /* Золотые грани — "СЕР" */
+        .preloader-cube-face:nth-child(odd) {
+            color: #d4af37;
+            border-color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+
+        /* Серебряные грани — "КО" */
+        .preloader-cube-face:nth-child(even) {
+            color: #e8e8e8;
+            border-color: #c0c0c0;
+            text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.15), inset 0 0 20px rgba(192, 192, 192, 0.05);
         }
 
         .preloader-cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(40px); }
@@ -2886,16 +2901,16 @@
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-cube">
-            <div class="preloader-cube-face">SE</div>
-            <div class="preloader-cube-face">RK</div>
-            <div class="preloader-cube-face">O</div>
-            <div class="preloader-cube-face">⚖</div>
-            <div class="preloader-cube-face">С</div>
-            <div class="preloader-cube-face">И</div>
-        </div>
+<div class="preloader" id="preloader">
+    <div class="preloader-cube">
+        <div class="preloader-cube-face gold">СЕР</div>
+        <div class="preloader-cube-face silver">КО</div>
+        <div class="preloader-cube-face gold">СЕР</div>
+        <div class="preloader-cube-face silver">КО</div>
+        <div class="preloader-cube-face gold">СЕР</div>
+        <div class="preloader-cube-face silver">КО</div>
     </div>
+</div>
 
     <!-- Header -->
     <header class="header" id="header">
