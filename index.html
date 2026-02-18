@@ -5,11 +5,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106860023 ', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106860023  ', 'ym');
 
     ym(106860023, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/106860023 " style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/106860023  " style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 <!DOCTYPE html>
@@ -165,7 +165,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg  '%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
             pointer-events: none;
             opacity: 0.4;
         }
@@ -1948,7 +1948,7 @@
         }
 
         .form-select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg  ' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             padding-right: 40px;
@@ -2445,34 +2445,117 @@
             background: var(--gold-dark);
         }
 
-        /* Telegram Widget */
-        .telegram-widget {
+        /* Chat Widget - заменяет Telegram Widget */
+        .chat-widget {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 999;
-            background: linear-gradient(135deg, #0088cc 0%, #005580 100%);
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
             border-radius: 50%;
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             cursor: pointer;
             transition: var(--transition);
             border: 2px solid rgba(255,255,255,0.1);
         }
 
-        .telegram-widget:hover {
+        .chat-widget:hover {
             transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 136, 204, 0.5);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
         }
 
-        .telegram-widget svg {
+        .chat-widget svg {
             width: 32px;
             height: 32px;
-            fill: white;
+            fill: var(--piano-black);
+        }
+
+        /* Chat Modal */
+        .chat-modal {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            background: linear-gradient(145deg, rgba(28, 28, 28, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 24px;
+            z-index: 998;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            backdrop-filter: blur(20px);
+        }
+
+        .chat-modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .chat-modal-title {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .chat-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateX(5px);
+        }
+
+        .chat-option-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .chat-option-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .chat-option-subtext {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
         }
 
         /* TABLET ADJUSTMENTS */
@@ -2794,6 +2877,10 @@
                 width: 52px;
                 height: 70px;
             }
+
+            .chat-modal {
+                width: 360px;
+            }
         }
     </style>
 </head>
@@ -2815,7 +2902,7 @@
         <div class="header-content">
             <a href="#" class="logo">
                 <div class="logo-emblem">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg ">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg  ">
                         <defs>
                             <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" style="stop-color:#b8860b;stop-opacity:1" />
@@ -3088,7 +3175,7 @@
                     <div class="step-number">01</div>
                     <div class="step-content">
                         <h3 class="step-title">Пишете</h3>
-                        <p class="step-desc">Описываете ситуацию в Telegram или через форму. Отвечаю в течение суток</p>
+                        <p class="step-desc">Описываете ситуацию в мессенджере или через форму. Отвечаю в течение суток</p>
                     </div>
                 </div>
                 <div class="step fade-in">
@@ -3270,7 +3357,7 @@
                     <div class="faq-icon"></div>
                 </button>
                 <div class="faq-answer">
-                    <p>Мы общаемся в мессенджерах, обмениваемся документами через облачные сервисы или email. Подпись — электронная или через нотариуса при необходимости. 70% задач решается без личных встреч. Если нужен выезд — обсуждаем отдельно.</p>
+                    <p>Мы общаемся в мессенджерах (WhatsApp, MAX), обмениваемся документами через облачные сервисы или email. Подпись — электронная или через нотариуса при необходимости. 70% задач решается без личных встреч. Если нужен выезд — обсуждаем отдельно.</p>
                 </div>
             </div>
             
@@ -3290,7 +3377,7 @@
                     <div class="faq-icon"></div>
                 </button>
                 <div class="faq-answer">
-                    <p>Обычно в течение суток. В рабочие дни с 9:00 до 21:00. Для срочных вопросов — напишите в Telegram, там отвечаю быстрее.</p>
+                    <p>Обычно в течение суток. В рабочие дни с 9:00 до 21:00. Для срочных вопросов — напишите в WhatsApp или MAX, там отвечаю быстрее.</p>
                 </div>
             </div>
             
@@ -3319,11 +3406,18 @@
             <div class="contact-info fade-in">
                 <h3>Прямая связь</h3>
                 <div class="contact-methods">
-                    <a href="https://t.me/+79774232473 " target="_blank" class="contact-method">
-                        <div class="contact-method-icon">📱</div>
+                    <a href="https://wa.me/79774232473  " target="_blank" class="contact-method">
+                        <div class="contact-method-icon">💬</div>
                         <div class="contact-method-content">
-                            <div class="contact-method-label">Написать в Telegram</div>
+                            <div class="contact-method-label">Написать в WhatsApp</div>
                             <div class="contact-method-value">+7 (977) 42-32-473</div>
+                        </div>
+                    </a>
+                    <a href="https://t.me/ConsulLexbot" target="_blank" class="contact-method">
+                        <div class="contact-method-icon">✈️</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">Telegram-бот (если доступен)</div>
+                            <div class="contact-method-value">@ConsulLexbot</div>
                         </div>
                     </a>
                     <a href="mailto:333742917@mail.ru" class="contact-method">
@@ -3345,7 +3439,7 @@
                 <div class="contact-urgent">
                     <div class="contact-urgent-title">Срочный вопрос?</div>
                     <div class="contact-urgent-text">
-                        Напишите в Telegram — отвечу быстрее, чем через форму. 
+                        Напишите в WhatsApp или MAX — отвечу быстрее, чем через форму. 
                         Для постоянных клиентов доступна поддержка 24/7.
                     </div>
                 </div>
@@ -3462,12 +3556,41 @@
         </div>
     </footer>
 
-    <!-- Telegram Widget -->
-    <a href="https://t.me/+79774232473 " target="_blank" class="telegram-widget" title="Написать в Telegram">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg ">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    <!-- Chat Widget (заменяет Telegram Widget) -->
+    <div class="chat-widget" onclick="toggleChatModal()" title="Написать">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg  ">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            <path d="M7 9h10v2H7zm0-3h10v2H7z"/>
         </svg>
-    </a>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-modal-title">Выберите способ связи</div>
+        <div class="chat-options">
+            <a href="https://wa.me/79774232473  " target="_blank" class="chat-option">
+                <div class="chat-option-icon">💬</div>
+                <div>
+                    <div class="chat-option-text">WhatsApp</div>
+                    <div class="chat-option-subtext">Быстрый ответ</div>
+                </div>
+            </a>
+            <a href="https://t.me/ConsulLexbot" target="_blank" class="chat-option">
+                <div class="chat-option-icon">✈️</div>
+                <div>
+                    <div class="chat-option-text">Telegram-бот</div>
+                    <div class="chat-option-subtext">@ConsulLexbot (если доступен)</div>
+                </div>
+            </a>
+            <a href="mailto:333742917@mail.ru" class="chat-option">
+                <div class="chat-option-icon">✉️</div>
+                <div>
+                    <div class="chat-option-text">Email</div>
+                    <div class="chat-option-subtext">333742917@mail.ru</div>
+                </div>
+            </a>
+        </div>
+    </div>
 
     <!-- Notification -->
     <div class="notification" id="notification">
@@ -3483,7 +3606,7 @@
         // ==========================================
         const FORMSPREE_CONFIG = {
             enabled: true,
-            endpoint: 'https://formspree.io/f/mzdazdry '
+            endpoint: 'https://formspree.io/f/mzdazdry  '
         };
 
         // ==========================================
@@ -3539,6 +3662,23 @@
             overlay.classList.toggle('active');
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
         }
+
+        // ==========================================
+        // CHAT MODAL
+        // ==========================================
+        function toggleChatModal() {
+            const modal = document.getElementById('chatModal');
+            modal.classList.toggle('active');
+        }
+
+        // Закрытие модалки при клике вне её
+        document.addEventListener('click', (e) => {
+            const widget = document.querySelector('.chat-widget');
+            const modal = document.getElementById('chatModal');
+            if (!widget.contains(e.target) && !modal.contains(e.target)) {
+                modal.classList.remove('active');
+            }
+        });
 
         // ==========================================
         // FAQ
@@ -3609,7 +3749,7 @@
             const notification = document.getElementById('notification');
             notification.classList.add('error');
             notification.querySelector('.notification-title').textContent = 'Ошибка';
-            notification.querySelector('.notification-text').textContent = 'Пожалуйста, свяжитесь напрямую по Telegram';
+            notification.querySelector('.notification-text').textContent = 'Пожалуйста, свяжитесь напрямую по WhatsApp';
             notification.classList.add('active');
         }
 
