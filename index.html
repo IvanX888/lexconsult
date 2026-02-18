@@ -5,11 +5,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106860023', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106860023 ', 'ym');
 
     ym(106860023, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/106860023" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/106860023 " style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 <!DOCTYPE html>
@@ -165,7 +165,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
             pointer-events: none;
             opacity: 0.4;
         }
@@ -674,11 +674,6 @@
             transform: translateX(100%);
         }
 
-        /* ФОТО: Инструкция по замене:
-           1. Подготовьте фото в формате JPG или PNG, желательно квадратное для аватара и 3:4 для большого фото
-           2. Загрузите фото на хостинг (imgur, свой сервер) или конвертируйте в base64
-           3. Замените URL в src ниже или используйте base64 */
-        
         .hero-photo-large {
             width: 100%;
             aspect-ratio: 3/4;
@@ -690,7 +685,6 @@
             position: relative;
             transition: var(--transition);
             background: var(--wood-dark);
-            cursor: pointer;
         }
 
         .hero-photo-large:hover {
@@ -710,36 +704,6 @@
         .hero-photo-large:hover img {
             filter: sepia(5%) saturate(95%) contrast(110%);
             transform: scale(1.02);
-        }
-
-        /* Placeholder для фото - удалите эту часть когда вставите реальное фото */
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 16px;
-            text-align: center;
-            padding: 20px;
-            gap: 12px;
-        }
-
-        .photo-placeholder::before {
-            content: '👤';
-            font-size: 48px;
-            opacity: 0.6;
-        }
-
-        .photo-placeholder-text {
-            font-size: 12px;
-            color: var(--text-muted);
-            max-width: 80%;
-            line-height: 1.4;
         }
 
         @media (min-width: 1024px) {
@@ -765,7 +729,6 @@
             border: 2px solid var(--gold);
             flex-shrink: 0;
             box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
-            cursor: pointer;
         }
 
         .hero-avatar-small img {
@@ -1985,7 +1948,7 @@
         }
 
         .form-select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             padding-right: 40px;
@@ -2183,7 +2146,6 @@
             transition: var(--transition);
             flex-shrink: 0;
             background: var(--wood-dark);
-            cursor: pointer;
         }
 
         .footer-photo-passport:hover {
@@ -2853,7 +2815,7 @@
         <div class="header-content">
             <a href="#" class="logo">
                 <div class="logo-emblem">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg ">
                         <defs>
                             <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" style="stop-color:#b8860b;stop-opacity:1" />
@@ -2934,27 +2896,15 @@
                 <div class="hero-card">
                     <div class="hero-card-shine"></div>
                     
-                    <!-- 
-                        ФОТО: Для замены фото:
-                        1. Загрузите фото на любой хостинг (imgur, яндекс.диск с публичным доступом и т.д.)
-                        2. Получите прямую ссылку на изображение (заканчивается на .jpg, .png и т.д.)
-                        3. Замените содержимое блока hero-photo-large на: <img src="ВАША_ССЫЛКА" alt="Иван Серко">
-                        
-                        ИЛИ используйте base64 (конвертируйте фото на base64decode.org):
-                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ..." alt="Иван Серко">
-                    -->
-                    <div class="hero-photo-large" id="heroPhotoLarge" title="Кликните, чтобы загрузить фото (в демо-режиме)">
-                        <div class="photo-placeholder">
-                            <div class="photo-placeholder-text">
-                                Загрузите ваше фото<br>
-                                <small style="font-size: 10px; opacity: 0.7;">(в демо-режиме кликните здесь)</small>
-                            </div>
-                        </div>
+                    <!-- ФОТО: Большое фото -->
+                    <div class="hero-photo-large">
+                        <img src="фотто%205.png" alt="Иван Серко">
                     </div>
                     
                     <div class="hero-card-header">
-                        <div class="hero-avatar-small" id="heroAvatarSmall" title="Аватар">
-                            <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--wood-medium) 0%,var(--wood-dark) 100%);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:20px;">👤</div>
+                        <!-- ФОТО: Аватар -->
+                        <div class="hero-avatar-small">
+                            <img src="фотто%205.png" alt="Иван Серко">
                         </div>
                         <div>
                             <div class="hero-card-title">Иван Серко</div>
@@ -3004,7 +2954,7 @@
         <div class="trust-content">
             <div class="trust-item">
                 <div class="trust-icon">★</div>
-                <div><strong>Начинающий</strong> специалист</div>
+                <div><strong>Специалист</strong></div>
             </div>
             <div class="trust-item">
                 <div class="trust-icon">◆</div>
@@ -3266,8 +3216,8 @@
                 <div class="step fade-in">
                     <div class="step-number">01</div>
                     <div class="step-content">
-                        <h3 class="step-title">Начинающий специалист</h3>
-                        <p class="step-desc">У меня небольшой опыт, но есть современные инструменты, свежие знания законов и искреннее желание помочь. Каждое дело — это возможность для меня расти вместе с вами.</p>
+                        <h3 class="step-title">Специалист</h3>
+                        <p class="step-desc">У меня есть современные инструменты, свежие знания законов и искреннее желание помочь. Каждое дело — это возможность для меня расти вместе с вами.</p>
                     </div>
                 </div>
                 <div class="step fade-in">
@@ -3310,7 +3260,7 @@
                     <div class="faq-icon"></div>
                 </button>
                 <div class="faq-answer">
-                    <p>Честно — у меня небольшой опыт практической работы. Но я постоянно учусь, слежу за изменениями в законодательстве и использую современные инструменты. Если ваш вопрос требует опыта, которого у меня пока нет — я честно скажу об этом и подскажу, к кому обратиться.</p>
+                    <p>Я специалист с современными инструментами и свежими знаниями законодательства. Если ваш вопрос требует опыта, которого у меня пока нет — я честно скажу об этом и подскажу, к кому обратиться.</p>
                 </div>
             </div>
             
@@ -3369,7 +3319,7 @@
             <div class="contact-info fade-in">
                 <h3>Прямая связь</h3>
                 <div class="contact-methods">
-                    <a href="https://t.me/+79774232473" target="_blank" class="contact-method">
+                    <a href="https://t.me/+79774232473 " target="_blank" class="contact-method">
                         <div class="contact-method-icon">📱</div>
                         <div class="contact-method-content">
                             <div class="contact-method-label">Написать в Telegram</div>
@@ -3492,8 +3442,9 @@
         <!-- Footer bottom с фото и юридическими ссылками -->
         <div class="footer-bottom">
             <div class="footer-bottom-row">
-                <div class="footer-photo-passport" id="footerPhotoPassport" title="Ваше фото">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--wood-medium) 0%,var(--wood-dark) 100%);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;">👤</div>
+                <!-- ФОТО: В футере -->
+                <div class="footer-photo-passport">
+                    <img src="фотто%205.png" alt="Иван Серко">
                 </div>
                 <div class="footer-bottom-content">
                     <div style="color: var(--gold); font-weight: 600; font-size: 14px;">Серко Иван Иванович</div>
@@ -3512,8 +3463,8 @@
     </footer>
 
     <!-- Telegram Widget -->
-    <a href="https://t.me/+79774232473" target="_blank" class="telegram-widget" title="Написать в Telegram">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <a href="https://t.me/+79774232473 " target="_blank" class="telegram-widget" title="Написать в Telegram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg ">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
         </svg>
     </a>
@@ -3532,82 +3483,13 @@
         // ==========================================
         const FORMSPREE_CONFIG = {
             enabled: true,
-            endpoint: 'https://formspree.io/f/mzdazdry'
+            endpoint: 'https://formspree.io/f/mzdazdry '
         };
-
-        // ==========================================
-        // ФОТО: Инструкция по замене
-        // ==========================================
-        // Для замены фото на реальные:
-        // 1. Загрузите фото на хостинг (imgur, cloudinary, свой сервер)
-        // 2. Получите прямую ссылку (URL должен заканчиваться на .jpg, .png и т.д.)
-        // 3. Найдите в HTML блоки с id="heroPhotoLarge", id="heroAvatarSmall", id="footerPhotoPassport"
-        // 4. Замените содержимое на: <img src="ВАША_ССЫЛКА" alt="Иван Серко">
-        // 
-        // ИЛИ используйте base64:
-        // 1. Конвертируйте фото в base64 на сайте base64decode.org
-        // 2. Вставьте: <img src="data:image/jpeg;base64,ВАШ_КОД" alt="Иван Серко">
-        //
-        // Для демо-режима оставлена функция загрузки через FileReader (см. ниже)
-
-        // ==========================================
-        // ЗАГРУЗКА ФОТО ЧЕРЕЗ FILE READER (ДЕМО)
-        // ==========================================
-        function setupPhotoUpload() {
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
-            fileInput.style.display = 'none';
-            fileInput.id = 'photoInput';
-            document.body.appendChild(fileInput);
-
-            document.getElementById('heroPhotoLarge').addEventListener('click', () => {
-                fileInput.click();
-            });
-
-            document.getElementById('heroAvatarSmall').addEventListener('click', () => {
-                fileInput.click();
-            });
-
-            document.getElementById('footerPhotoPassport').addEventListener('click', () => {
-                fileInput.click();
-            });
-
-            fileInput.addEventListener('change', async (e) => {
-                const file = e.target.files[0];
-                if (!file) return;
-
-                try {
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                        const base64 = event.target.result;
-                        
-                        document.getElementById('heroPhotoLarge').innerHTML = `<img src="${base64}" alt="Иван Серко">`;
-                        document.getElementById('heroAvatarSmall').innerHTML = `<img src="${base64}" alt="Иван Серко">`;
-                        document.getElementById('footerPhotoPassport').innerHTML = `<img src="${base64}" alt="Иван Серко">`;
-                        
-                        localStorage.setItem('lawyerPhoto', base64);
-                    };
-                    reader.readAsDataURL(file);
-                } catch (err) {
-                    console.error('Ошибка загрузки фото:', err);
-                    alert('Ошибка загрузки фото. Попробуйте другой файл.');
-                }
-            });
-
-            const savedPhoto = localStorage.getItem('lawyerPhoto');
-            if (savedPhoto) {
-                document.getElementById('heroPhotoLarge').innerHTML = `<img src="${savedPhoto}" alt="Иван Серко">`;
-                document.getElementById('heroAvatarSmall').innerHTML = `<img src="${savedPhoto}" alt="Иван Серко">`;
-                document.getElementById('footerPhotoPassport').innerHTML = `<img src="${savedPhoto}" alt="Иван Серко">`;
-            }
-        }
 
         // ==========================================
         // PRELOADER
         // ==========================================
         window.addEventListener('load', () => {
-            setupPhotoUpload();
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('hidden');
             }, 2000);
