@@ -1900,127 +1900,9 @@
             font-weight: 300;
         }
 
+        /* Форма удалена, стили оставлены для совместимости, но они не используются */
         .contact-form {
-            background: linear-gradient(145deg, rgba(28, 28, 28, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
-            padding: 32px 24px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-        }
-
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 20%;
-            right: 20%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 10px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 0;
-            font-size: 16px;
-            transition: var(--transition);
-            background: rgba(10, 10, 10, 0.8);
-            color: var(--text-primary);
-            font-family: 'Montserrat', 'Segoe UI', sans-serif;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-        }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            padding-right: 40px;
-            cursor: pointer;
-        }
-
-        .form-submit {
-            width: 100%;
-            margin-top: 8px;
-            position: relative;
-        }
-
-        .form-submit.loading {
-            color: transparent;
-        }
-
-        .form-submit.loading::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            margin-left: -10px;
-            margin-top: -10px;
-            border: 2px solid var(--piano-black);
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spinner 0.8s linear infinite;
-        }
-
-        @keyframes spinner {
-            to { transform: rotate(360deg); }
-        }
-
-        .form-footer {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            line-height: 1.6;
-        }
-
-        .form-footer a {
-            color: var(--gold);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-        }
-
-        .form-footer a:hover {
-            border-bottom-color: var(--gold);
+            display: none;
         }
 
         /* Footer */
@@ -2619,13 +2501,16 @@
             
             .contact-grid {
                 display: grid;
-                grid-template-columns: 1fr 1.2fr;
+                grid-template-columns: 1fr;
                 gap: 40px;
                 align-items: start;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .contact-info h3 {
-                text-align: left;
+                text-align: center;
             }
             
             .footer-content {
@@ -2872,7 +2757,7 @@
             
             .contact-grid {
                 gap: 80px;
-                max-width: 1200px;
+                max-width: 800px;
                 margin: 80px auto 0;
             }
             
@@ -2954,7 +2839,7 @@
                 <a href="#how" class="nav-link">Процесс</a>
                 <a href="#pricing" class="nav-link">Тарифы</a>
                 <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="btn btn-primary">Консультация</a>
+                <a href="tel:+79774232473" class="btn btn-primary">📞 Позвонить</a>
             </nav>
             
             <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
@@ -2971,7 +2856,7 @@
             <a href="#pricing" onclick="toggleMenu()">Тарифы</a>
             <a href="#faq" onclick="toggleMenu()">FAQ</a>
             <a href="#contact" onclick="toggleMenu()">Контакты</a>
-            <a href="#contact" class="btn btn-primary" onclick="toggleMenu()">Записаться</a>
+            <a href="tel:+79774232473" class="btn btn-primary" onclick="toggleMenu()">📞 Позвонить</a>
         </nav>
     </div>
 
@@ -2991,8 +2876,15 @@
             </div>
             
             <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary btn-large">Описать ситуацию</a>
+                <a href="https://max.ru/chat/79774232473" target="_blank" class="btn btn-primary btn-large" style="background: linear-gradient(135deg, #6b4ee6 0%, #9b59b6 50%, #6b4ee6 100%); box-shadow: 0 4px 15px rgba(107, 78, 230, 0.3);">💬 Написать в MAX</a>
+                <a href="https://wa.me/79774232473" target="_blank" class="btn btn-outline btn-large" style="border-color: #25d366; color: #25d366;">💬 WhatsApp</a>
                 <a href="#services" class="btn btn-outline btn-large">Смотреть услуги</a>
+            </div>
+            <div style="margin-top: 16px; display: flex; align-items: center; gap: 8px; justify-content: center;">
+                <input type="checkbox" id="heroConsent" required style="width: 16px; height: 16px; accent-color: var(--gold);">
+                <label for="heroConsent" style="font-size: 11px; color: var(--text-muted); cursor: pointer;">
+                    Согласен с <a href="privacy.html" target="_blank" style="color: var(--gold);">политикой</a> и <a href="personal-data.html" target="_blank" style="color: var(--gold);">обработкой данных</a>
+                </label>
             </div>
         </div>
         
@@ -3468,27 +3360,52 @@
         <div class="section-header fade-in">
             <div class="section-label">Контакты</div>
             <h2 class="section-title">Начните с <strong>разговора</strong></h2>
-            <p class="section-subtitle">Опишите ситуацию в нескольких предложениях. За 15-20 минут пойму, смогу помочь или нет, подберём формат работы и назову сроки и стоимость.</p>
+            <p class="section-subtitle">Опишите ситуацию — за 15-20 минут пойму, смогу помочь или нет, подберём формат работы и назову сроки.</p>
         </div>
         
-        <div class="contact-grid">
-            <div class="contact-info fade-in">
-                <h3>Прямая связь</h3>
+        <div class="contact-grid" style="max-width: 800px; margin: 48px auto 0;">
+            <div class="contact-info fade-in" style="text-align: center;">
+                <h3 style="text-align: center;">Прямая связь</h3>
                 <div class="contact-methods">
-                    <a href="https://wa.me/79774232473" target="_blank" class="contact-method">
-                        <div class="contact-method-icon">💬</div>
+                    <!-- MAX — основной -->
+                    <a href="https://max.ru/chat/79774232473" target="_blank" class="contact-method" style="border-left-color: #6b4ee6; background: linear-gradient(135deg, rgba(107, 78, 230, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);">
+                        <div class="contact-method-icon" style="background: rgba(107, 78, 230, 0.15); border-color: #6b4ee6; color: #9b59b6;">💬</div>
                         <div class="contact-method-content">
-                            <div class="contact-method-label">Написать в WhatsApp</div>
+                            <div class="contact-method-label" style="color: #9b59b6;">Написать в MAX (основной)</div>
+                            <div class="contact-method-value">+7 (977) 42-32-473</div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Отвечаю быстрее всего</div>
+                        </div>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/79774232473" target="_blank" class="contact-method" style="border-left-color: #25d366;">
+                        <div class="contact-method-icon" style="background: rgba(37, 211, 102, 0.1); border-color: #25d366; color: #25d366;">💬</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label" style="color: #25d366;">Написать в WhatsApp</div>
                             <div class="contact-method-value">+7 (977) 42-32-473</div>
                         </div>
                     </a>
-                    <a href="https://t.me/ConsulLexbot" target="_blank" class="contact-method">
-                        <div class="contact-method-icon">✈️</div>
+                    
+                    <!-- Telegram -->
+                    <a href="https://t.me/ConsulLexbot" target="_blank" class="contact-method" style="border-left-color: #0088cc;">
+                        <div class="contact-method-icon" style="background: rgba(0, 136, 204, 0.1); border-color: #0088cc; color: #0088cc;">✈️</div>
                         <div class="contact-method-content">
-                            <div class="contact-method-label">Telegram-бот (если доступен)</div>
+                            <div class="contact-method-label" style="color: #0088cc;">Telegram-бот (если доступен)</div>
                             <div class="contact-method-value">@ConsulLexbot</div>
                         </div>
                     </a>
+                    
+                    <!-- Позвонить -->
+                    <a href="tel:+79774232473" class="contact-method" style="border-left-color: var(--gold);">
+                        <div class="contact-method-icon">📞</div>
+                        <div class="contact-method-content">
+                            <div class="contact-method-label">Позвонить</div>
+                            <div class="contact-method-value">+7 (977) 42-32-473</div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">9:00 — 21:00, ежедневно</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Email -->
                     <a href="mailto:333742917@mail.ru" class="contact-method">
                         <div class="contact-method-icon">✉️</div>
                         <div class="contact-method-content">
@@ -3496,72 +3413,29 @@
                             <div class="contact-method-value">333742917@mail.ru</div>
                         </div>
                     </a>
-                    <div class="contact-method" style="cursor: default;">
-                        <div class="contact-method-icon">🕐</div>
-                        <div class="contact-method-content">
-                            <div class="contact-method-label">Режим работы</div>
-                            <div class="contact-method-value">9:00 — 21:00, ежедневно</div>
-                        </div>
-                    </div>
                 </div>
                 
-                <div class="contact-urgent">
-                    <div class="contact-urgent-title">Срочный вопрос?</div>
+                <div class="contact-urgent" style="margin-top: 32px;">
+                    <div class="contact-urgent-title">⚡ Срочный вопрос?</div>
                     <div class="contact-urgent-text">
-                        Напишите в WhatsApp или MAX — отвечу быстрее, чем через форму. 
+                        Пишите в <strong>MAX</strong> — отвечаю в приоритетном порядке.<br>
                         Для постоянных клиентов доступна поддержка 24/7.
                     </div>
                 </div>
+                
+                <!-- Чекбокс согласия для контактов -->
+                <div style="margin-top: 32px; padding: 20px; background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2);">
+                    <label style="display: flex; align-items: flex-start; gap: 12px; font-size: 12px; color: var(--text-secondary); cursor: pointer; text-align: left;">
+                        <input type="checkbox" id="contactConsent" required style="margin-top: 2px; width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0;">
+                        <span>
+                            Нажимая на кнопки связи, я подтверждаю, что ознакомлен(а) с 
+                            <a href="privacy.html" target="_blank" style="color: var(--gold);">Политикой конфиденциальности</a> и 
+                            <a href="personal-data.html" target="_blank" style="color: var(--gold);">Согласием на обработку персональных данных</a>, 
+                            даю согласие на обработку моих данных для целей оказания юридических услуг.
+                        </span>
+                    </label>
+                </div>
             </div>
-            
-            <form class="contact-form fade-in" id="contactForm" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label class="form-label">Ваше имя *</label>
-                    <input type="text" class="form-input" name="name" placeholder="Иванов Иван" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Телефон или email *</label>
-                    <input type="text" class="form-input" name="contact" placeholder="+7 (999) 000-00-00" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Тема обращения</label>
-                    <select class="form-select" name="service" id="serviceSelect">
-                        <option value="">Выберите направление</option>
-                        
-                        <!-- Основные 8 услуг из Services -->
-                        <option value="Недвижимость">🏛️ Недвижимость (от 15 000 ₽)</option>
-                        <option value="Семейное право">⚖️ Семейные вопросы (от 15 000 ₽)</option>
-                        <option value="Наследство">📜 Наследственные дела (от 10 000 ₽)</option>
-                        <option value="Налоги">📊 Налоговые споры (от 8 000 ₽)</option>
-                        <option value="Административное право">🚗 Административное право (от 5 000 ₽)</option>
-                        <option value="Трудовые споры">💼 Трудовые споры (от 12 000 ₽)</option>
-                        <option value="Документы">📄 Документы и договоры (от 4 000 ₽)</option>
-                        <option value="Представительство">⚔️ Представительство в суде (от 25 000 ₽)</option>
-                        
-                        <!-- Дополнительные варианты из Pricing -->
-                        <option value="Консультация">🎯 Консультация (от 2 000 ₽)</option>
-                        <option value="Стартовый пакет">⭐ Стартовый пакет — консультация + документ (от 5 000 ₽)</option>
-                        
-                        <option value="Другое">❓ Другое (обсудим)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Описание ситуации</label>
-                    <textarea class="form-textarea" name="message" placeholder="Кратко опишите проблему..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn btn-primary btn-large form-submit" id="submitBtn">
-                    Отправить заявку
-                </button>
-                
-                <p class="form-footer">
-                    Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" target="_blank">политикой конфиденциальности</a><br>
-                    и <a href="personal-data.html" target="_blank">обработкой персональных данных</a>
-                </p>
-            </form>
         </div>
     </section>
 
@@ -3618,7 +3492,7 @@
                     <img src="фотто%205.png" alt="Иван Серко">
                 </div>
                 <div class="footer-bottom-content">
-                    <div style="color: var(--gold); font-weight: 600; font-size: 14px;">Серко Иван Иванович</div>
+                    <div style="color: var(--gold); font-weight: 600; font-size: 14px;">Серко Иван Иванович, 1987 г.р.</div>
                     <div class="footer-bottom-text">
                         <span>© 2026 Мастерская права СЕРКО. Все права защищены.</span>
                         <span>Информация не является публичной офертой</span>
@@ -3633,9 +3507,9 @@
         </div>
     </footer>
 
-    <!-- Chat Widget (заменяет Telegram Widget) -->
-    <div class="chat-widget" onclick="toggleChatModal()" title="Написать">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <!-- Chat Widget — MAX основной -->
+    <div class="chat-widget" onclick="toggleChatModal()" title="Написать" style="background: linear-gradient(135deg, #6b4ee6 0%, #9b59b6 100%);">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
             <path d="M7 9h10v2H7zm0-3h10v2H7z"/>
         </svg>
@@ -3643,33 +3517,40 @@
 
     <!-- Chat Modal -->
     <div class="chat-modal" id="chatModal">
-        <div class="chat-modal-title">Выберите способ связи</div>
+        <div class="chat-modal-title" style="color: #9b59b6;">Выберите способ связи</div>
         <div class="chat-options">
+            <a href="https://max.ru/chat/79774232473" target="_blank" class="chat-option" style="background: rgba(107, 78, 230, 0.1); border-color: #6b4ee6;">
+                <div class="chat-option-icon" style="background: #6b4ee6; color: white;">💬</div>
+                <div>
+                    <div class="chat-option-text" style="color: #9b59b6; font-weight: 600;">MAX (основной)</div>
+                    <div class="chat-option-subtext">Отвечаю быстрее всего</div>
+                </div>
+            </a>
             <a href="https://wa.me/79774232473" target="_blank" class="chat-option">
-                <div class="chat-option-icon">💬</div>
+                <div class="chat-option-icon" style="background: #25d366; color: white;">💬</div>
                 <div>
                     <div class="chat-option-text">WhatsApp</div>
-                    <div class="chat-option-subtext">Быстрый ответ</div>
+                    <div class="chat-option-subtext">+7 (977) 42-32-473</div>
                 </div>
             </a>
             <a href="https://t.me/ConsulLexbot" target="_blank" class="chat-option">
-                <div class="chat-option-icon">✈️</div>
+                <div class="chat-option-icon" style="background: #0088cc; color: white;">✈️</div>
                 <div>
                     <div class="chat-option-text">Telegram-бот</div>
-                    <div class="chat-option-subtext">@ConsulLexbot (если доступен)</div>
+                    <div class="chat-option-subtext">@ConsulLexbot</div>
                 </div>
             </a>
-            <a href="mailto:333742917@mail.ru" class="chat-option">
-                <div class="chat-option-icon">✉️</div>
+            <a href="tel:+79774232473" class="chat-option">
+                <div class="chat-option-icon" style="background: var(--gold); color: var(--piano-black);">📞</div>
                 <div>
-                    <div class="chat-option-text">Email</div>
-                    <div class="chat-option-subtext">333742917@mail.ru</div>
+                    <div class="chat-option-text">Позвонить</div>
+                    <div class="chat-option-subtext">9:00 — 21:00</div>
                 </div>
             </a>
         </div>
     </div>
 
-    <!-- Notification -->
+    <!-- Notification (оставлена для возможного использования, но не используется) -->
     <div class="notification" id="notification">
         <div class="notification-icon">✓</div>
         <div class="notification-title">Заявка отправлена</div>
@@ -3677,15 +3558,19 @@
         <button class="notification-btn" onclick="closeNotification()">Закрыть</button>
     </div>
 
-    <script>
-        // ==========================================
-        // КОНФИГУРАЦИЯ
-        // ==========================================
-        const FORMSPREE_CONFIG = {
-            enabled: true,
-            endpoint: 'https://formspree.io/f/mzdazdry'
-        };
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.98); border-top: 1px solid rgba(212, 175, 55, 0.3); padding: 20px; z-index: 9998; display: none; backdrop-filter: blur(10px);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center;">
+            <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                Сайт использует файлы cookie и Яндекс.Метрику для анализа трафика. 
+                Продолжая использовать сайт, вы соглашаетесь с 
+                <a href="privacy.html" target="_blank" style="color: var(--gold);">политикой конфиденциальности</a>.
+            </p>
+            <button onclick="acceptCookies()" class="btn btn-primary" style="min-height: 40px; padding: 10px 24px; font-size: 12px;">Понятно</button>
+        </div>
+    </div>
 
+    <script>
         // ==========================================
         // PRELOADER
         // ==========================================
@@ -3782,54 +3667,8 @@
         }
 
         // ==========================================
-        // FORM SUBMIT
+        // NOTIFICATION FUNCTIONS (упрощённые, не используются)
         // ==========================================
-        async function handleSubmit(e) {
-            e.preventDefault();
-            
-            const btn = document.getElementById('submitBtn');
-            
-            btn.disabled = true;
-            btn.classList.add('loading');
-            
-            try {
-                const formData = new FormData(e.target);
-                
-                const response = await fetch(FORMSPREE_CONFIG.endpoint, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    showNotification();
-                    e.target.reset();
-                } else {
-                    throw new Error('Server error');
-                }
-            } catch (error) {
-                showNotificationError();
-            }
-            
-            btn.disabled = false;
-            btn.classList.remove('loading');
-        }
-
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.classList.add('active');
-        }
-
-        function showNotificationError() {
-            const notification = document.getElementById('notification');
-            notification.classList.add('error');
-            notification.querySelector('.notification-title').textContent = 'Ошибка';
-            notification.querySelector('.notification-text').textContent = 'Пожалуйста, свяжитесь напрямую по WhatsApp';
-            notification.classList.add('active');
-        }
-
         function closeNotification() {
             document.getElementById('notification').classList.remove('active');
         }
@@ -3887,7 +3726,38 @@
                 }
             }
         });
+
+        // ==========================================
+        // COOKIE BANNER
+        // ==========================================
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookieBanner').style.display = 'block';
+            }, 2000);
+        }
     </script>
+
+    <!-- Пример содержимого personal-data.html (для справки) — разместите на отдельной странице -->
+    <!-- 
+    В файле personal-data.html добавьте следующие разделы после раздела 6:
+    
+    <h3>6.1. Cookie и аналитика</h3>
+    <p>Я использую файлы cookie и сервис Яндекс.Метрика для анализа посещаемости сайта. 
+    Эти данные обрабатываются в обезличенной форме и не позволяют идентифицировать вас лично. 
+    Вы можете отключить cookie в настройках браузера.</p>
+    
+    <h3>6.2. Проверка статуса самозанятого</h3>
+    <p>Мои реквизиты как самозанятого:<br>
+    <strong>ФИО:</strong> Серко Иван Иванович<br>
+    <strong>Дата рождения:</strong> 1987 год<br>
+    <strong>ИНН:</strong> 500918804320<br>
+    <strong>Статус:</strong> Самозанятый (НПД)<br>
+    Проверить мой статус можно в приложении <a href="https://npd.nalog.ru/check-status/" target="_blank">"Мой налог"</a>.</p>
+    -->
 </body>
 </html>
-
