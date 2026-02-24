@@ -3662,9 +3662,11 @@
         // SERVICE SELECTION
         // ==========================================
         function selectService(serviceName) {
-            document.getElementById('serviceSelect').value = serviceName;
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        }
+    // Прокручиваем к контактам, где можно выбрать способ связи
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    // Можно добавить уведомление, что услуга выбрана
+    console.log('Выбрана услуга:', serviceName);
+}
 
         // ==========================================
         // NOTIFICATION FUNCTIONS (упрощённые, не используются)
